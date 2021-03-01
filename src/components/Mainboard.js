@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import Pin from './Pin';
 
@@ -9,9 +9,9 @@ function Mainboard(props) {
     return (
         <Wrapper>
             <Container>
-                {pins.map((pin) => {
+                {pins.map((pin, index) => {
                     let {urls} = pin;
-                  return  <Pin urls={urls}/>
+                  return  <Pin key={index} urls={urls} />
                 })}
                 
             </Container>
@@ -24,7 +24,7 @@ export default Mainboard
 
 
 const Wrapper = styled.div`
-    background-color: yellow;
+    background-color: white;
     display: flex;
     justify-content: center;
     height: 100%;
@@ -35,8 +35,11 @@ const Wrapper = styled.div`
 ` 
 
 const Container = styled.div`
-    background-color: green;
-    width: 80%;
-    display: flex;
+    max-width: 1260px;
+    column-count: 5;
+    column-gap: 10px;
+    margin: 0 auto;
+    height: 100%;
+    background-color: white;
     
 ` 

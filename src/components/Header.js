@@ -1,4 +1,4 @@
-import React, { useState, props } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 import SearchIcon from '@material-ui/icons/Search';
@@ -9,13 +9,15 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import IconButton from '@material-ui/core/IconButton';
 
 
-function Header() {
+function Header(props) {
     const [input, setInput] = useState("");
 
     const onSearchSubmit = (e) => {
-        e.preventDefault();
-       props.onSubmit(input);
-        
+        e.preventDefault()
+       props.onSubmit(input)
+       //make api calls to unplash after input's been submitted
+       console.log("this is the input :", input);
+
     }
 
     
@@ -39,7 +41,7 @@ function Header() {
             <SearchWrapper>
                 <SearchBarWrapper>
                     <IconButton>
-                        <SearchIcon/>
+                        <SearchIcon type="submit" onClick={onSearchSubmit}/>
                     </IconButton>
                     <form>
                         <input type="text" onChange={(e) => setInput(e.target.value)} />
