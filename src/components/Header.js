@@ -1,172 +1,137 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import PinterestIcon from '@material-ui/icons/Pinterest';
-import SearchIcon from '@material-ui/icons/Search';
-import NotificationIcon from '@material-ui/icons/Notifications';
-import TextsmsIcon from '@material-ui/icons/Textsms';
-import FaceIcon from '@material-ui/icons/Face';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import IconButton from '@material-ui/core/IconButton';
-
+import React, { useState } from "react";
+import styled from "styled-components";
+import PinterestIcon from "@material-ui/icons/Pinterest";
+import SearchIcon from "@material-ui/icons/Search";
+import NotificationIcon from "@material-ui/icons/Notifications";
+import TextsmsIcon from "@material-ui/icons/Textsms";
+import FaceIcon from "@material-ui/icons/Face";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import IconButton from "@material-ui/core/IconButton";
+import HomeIcon from "@material-ui/icons/Home";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 function Header(props) {
-    const [input, setInput] = useState("");
+  const [input, setInput] = useState("");
+  const [search, setSearch] = useState("false");
 
-    const onSearchSubmit = (e) => {
-        e.preventDefault()
-       props.onSubmit(input)
-       //make api calls to unplash after input's been submitted
-       console.log("this is the input :", input);
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    props.onSubmit(input);
+   
+  };
 
-    }
+  const expandSearch = () => {
+    setSearch(!search);
+  };
 
-    
 
-    return (
-        <Wrapper>
-            <LogoWrapper>
-                <IconButton>
-                    <PinterestIcon/>
-                </IconButton>
-            </LogoWrapper>
+  return (
+    <HeaderWrapper>
+      <Wrapper>
+        <LogoWrapper>
+          <IconButton>
+            <PinterestIcon href="/" />
+          </IconButton>
+        </LogoWrapper>
 
-            <HomePageButton>
-                <a href="/">Homepage</a>
-            </HomePageButton>
+        <div className="searcharea">
+          <IconButton>
+            <SearchIcon onClick={expandSearch} />
+          </IconButton>
+          <form>
+            <input
+              class={search ? "search__input" : "active"}
+              type="text"
+              placeholder="Search..."
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <button class="btn" type="submit" onClick={onSearchSubmit}>
+              Submit
+            </button>
+          </form>
+        </div>
 
-            <FollowingButton>
-                <a href="/">Following</a>
-            </FollowingButton>
+        <IconButton>
+          <HomeIcon href="/" />
+        </IconButton>
+        <IconButton>
+          <PersonAddIcon />
+        </IconButton>
 
-            <SearchWrapper>
-                <SearchBarWrapper>
-                    <IconButton>
-                        <SearchIcon type="submit" onClick={onSearchSubmit}/>
-                    </IconButton>
-                    <form>
-                        <input type="text" onChange={(e) => setInput(e.target.value)} />
-                        <button type="submit" onClick={onSearchSubmit}></button>
-                    </form>
-                </SearchBarWrapper>
-            </SearchWrapper>
-
-            <IconsWrapper>
-                <IconButton>
-                    <NotificationIcon/>
-                </IconButton>
-                <IconButton>
-                    <TextsmsIcon/>
-                </IconButton>
-                <IconButton>
-                    <NotificationIcon/>
-                </IconButton>
-                <IconButton>
-                    <FaceIcon/>
-                </IconButton>
-                <IconButton>
-                    <KeyboardArrowDownIcon/>
-                </IconButton>
-            </IconsWrapper>
-            
-
-        </Wrapper>
-        
-    )
+        <IconButton>
+          <NotificationIcon />
+        </IconButton>
+        <IconButton>
+          <TextsmsIcon />
+        </IconButton>
+        <IconButton>
+          <NotificationIcon />
+        </IconButton>
+        <IconButton>
+          <FaceIcon />
+        </IconButton>
+        <IconButton>
+          <KeyboardArrowDownIcon />
+        </IconButton>
+      </Wrapper>
+    </HeaderWrapper>
+  );
 }
 
-export default Header
+export default Header;
+
+const HeaderWrapper = styled.div`
+  margin: 0;
+  height: 100%;
+  padding-left: 4px;
+  width: 5rem;
+  background-color: #f6f6f6;
+  position: fixed;
+`;
 
 const Wrapper = styled.div`
-    display:flex;
-    height: 56px;
-    padding: 12px 4px 4px 16px;
-    background-color: white;
-    color: black;
-`
+  background-color: #f6f6f6;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  margin-left: 0.8rem;
+
+  .searcharea {
+    display: flex;
+  }
+
+  .search__input {
+    visibility: hidden;
+  }
+
+  .active {
+    outline: none;
+    border: 0.5px solid gray;
+    background-color: #fff;
+    position: absolute;
+    left: 1;
+    padding: 15px 50px;
+    z-index: 1;
+    border-radius: 40px;
+    transition: 0.1s ease-in;
+    width: 300%;
+  }
+
+  .MuiIconButton-root {
+    z-index: 999;
+  }
+
+  button.btn {
+    display: none;
+  }
+`;
 
 const LogoWrapper = styled.div`
-    .MuiSvgIcon-root{
-        color: #e60023;
-        font-size:32px;
-        cursor: pointer;
-    }
-`
-const HomeButtons = styled.div`
-    display: flex;
-    height: 48px;
-    min-width: 123px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 24px;
+  margin-bottom: 2rem;
+
+  .MuiSvgIcon-root {
+    color: #e60023;
+    font-size: 40px;
     cursor: pointer;
-`
-
-const HomePageButton = styled(HomeButtons)`
-    background-color: rgb(17, 17, 17);
-
-    a{
-        text-decoration: none;
-        color: white;
-        font-weight: 700;
-    }
-
-`
-
-const FollowingButton = styled(HomeButtons)`
-    background-color: white;
-
-    a{
-        text-decoration: none;
-        color: black;
-        font-weight: 700;
-    }
-
-    :hover{
-        background-color: #e1e1e1;
-    }
-
-`
-
-const SearchWrapper = styled.div`
-    flex: 1;
-
-`
-
-const SearchBarWrapper = styled.div`
-    background-color: #efefef;
-    display: flex;
-    height: 48px;
-    width; 100%;
-    border-radius: 50px;
-    border: none;
-    padding-left: 10px;
-
-    form{
-        display: flex;
-        flex:1;
-    }
-
-    form > input {
-        background-color:transparent;
-        border: none;
-        width: 100%;
-        margin-left: 5px;
-        font-size: 16px;
-    }
-
-    form > button {
-        display: none;
-    }
-
-    input: focus {
-        outline: none;
-    }
-    
-`
-
-const IconsWrapper = styled.div`
-   
-
-`
-
-
+    z-index: 999;
+  }
+`;

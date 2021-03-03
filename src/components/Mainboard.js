@@ -24,10 +24,11 @@ export default Mainboard
 
 
 const Wrapper = styled.div`
+    margin-left: 5rem;
     background-color: white;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
-    height: 100%;
+    height: 96vh;
     width: 100%;
     margin-top: 5px;
 
@@ -35,11 +36,12 @@ const Wrapper = styled.div`
 ` 
 
 const Container = styled.div`
-    max-width: 1260px;
-    column-count: 5;
+    max-width: 3780px;
+    column-count: 6;
     column-gap: 10px;
-    margin: 0 auto;
-    height: 100%;
+    margin-left: 15rem;
+    height: 96vh;
     background-color: white;
+
     
 ` 
