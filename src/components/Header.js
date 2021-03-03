@@ -109,11 +109,12 @@ const Wrapper = styled.div`
     background-color: #fff;
     position: absolute;
     left: 1;
-    padding: 15px 50px;
+    padding: 12px 50px;
     z-index: 1;
     border-radius: 40px;
     transition: 0.1s ease-in;
     width: 300%;
+    font-size: 15px;
   }
 
   .MuiIconButton-root {
