@@ -1,6 +1,6 @@
 
 # Pinterest clone (with a tweak)
-Cloned the famous pinterest application but added my own little twist to it. I used React with styled-components for the Logo and Frontend, then used axios for http request (unsplash API).
+Cloned the famous pinterest application but added my own little twist to it. I used styled-components for the Logos, and unsplash API for he pictures.
 
 
 <br>
