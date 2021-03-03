@@ -1,6 +1,6 @@
 
 # Pinterest clone (with a tweak)
-Cloned the famous pinterest application but added my own little twist to it. I used styled-components for the Logos, and unsplash API for he pictures.
+Cloned the famous pinterest application but added my own little twist to it. I used styled-components for the Icons, and unsplash API for he pictures.
 
 
 <br>
